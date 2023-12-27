@@ -10,9 +10,11 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $link_wa = config('utama.url_wa');
         $panduan = Panduan::orderBy('created_at', 'DESC')->get();
         return view('index', [
-            'panduan' => $panduan
+            'panduan' => $panduan,
+            'link_wa' => $link_wa
         ]);
     }
 
@@ -24,5 +26,4 @@ class HomeController extends Controller
 
         return view('blog', compact('panduan', 'panduandetail'));
     }
-
 }
